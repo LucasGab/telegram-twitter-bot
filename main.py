@@ -31,40 +31,8 @@ api = tweepy.API(auth)
 
 def getTweets(text):
     text = text.strip()
-    text = text.replace("@YELLOW_CRYPTO","@Yellow_crypto_")
     tweets = []
     fonts = []
-    init = 0
-    end = 280
-
-    mentionIndexInit = text.find("@Yellow_crypto_")
-    mentionIndexEnd = -1
-
-    if(mentionIndexInit == -1):
-        mentionIndexInit = text.find("@YELLOW_CRYPTO")
-    
-    if(mentionIndexInit != -1):
-        mentionIndexEnd = mentionIndexInit
-        while (mentionIndexEnd < len(text)) and (text[mentionIndexEnd] != '\n') and (text[mentionIndexEnd] != ' '):
-            mentionIndexEnd+=1
-
-        fonts.append(text[mentionIndexInit:mentionIndexEnd])
-        text = text.replace(fonts[len(fonts)-1],"")
-
-
-    fontIndexInit = text.find("Fonte:")
-    fontIndexEnd  = -1
-
-    if(fontIndexInit == -1):
-        fontIndexInit = text.find("fonte:")
-
-    if(fontIndexInit != -1):
-        fontIndexEnd = fontIndexInit+7
-        while (fontIndexEnd < len(text)) and (text[fontIndexEnd] != '\n') and (text[fontIndexEnd] != ' '):
-            fontIndexEnd+=1
-        
-        fonts.append(text[fontIndexInit:fontIndexEnd])
-        text = text.replace(fonts[len(fonts)-1],"")
 
     lines = text.split('\n')
     lines = [x for x in lines if x != '']
@@ -76,25 +44,19 @@ def getTweets(text):
         firstLine = True
         for word in words:  
 
-            if(len(word)+len(actual) <= 255 and firstLine):
+            if(len(word)+len(actual) <= 275 and firstLine):
                 actual = actual + word
                 firstLine = False
-            elif(len(word)+1+len(actual) <= 255 and not firstLine):
+            elif(len(word)+1+len(actual) <= 275 and not firstLine):
                 actual = actual + ' ' + word
             else:
                 tweets.append(actual)
                 actual = word
 
-        if (len(actual)+2 <= 255):
+        if (len(actual)+2 <= 275):
             actual = actual + "\n\n"
 
     tweets.append(actual)
-
-    for font in fonts:
-        if(len(font) + len(tweets[len(tweets)-1]) <= 250):
-            tweets[len(tweets)-1] = tweets[len(tweets)-1] + font + "\n\n"
-        else:
-            tweets.append(font + "\n\n")
 
     return tweets
 
