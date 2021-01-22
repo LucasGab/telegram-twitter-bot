@@ -1,17 +1,17 @@
 # telegram-twitter-bot
 
-    Telegram Bot, which replicates messages from telegram channel on the Twitter account.
+Telegram Bot, which replicates messages from telegram channel on the Twitter account.
 
-    The bot was designed to run on the Heroku cloud platform and was built only to clone 
-    messages from a specific telegram channel, but this can be easily be changed to accept
-    private  or group messages.
+The bot was designed to run on the Heroku cloud platform and was built only to clone 
+messages from a specific telegram channel, but this can be easily be changed to accept
+private  or group messages.
 
 Requirements
 
-    To use this bot need the twitter API keys, you can request it at: https://developer.twitter.com/en
+To use this bot need the twitter API keys, you can request it at: https://developer.twitter.com/en
 
-    Needs an API bot key in the telegram. Here you can see 
-    how to create a bot in telegram: https://core.telegram.org/bots
+Needs an API bot key in the telegram. Here you can see 
+how to create a bot in telegram: https://core.telegram.org/bots
 
 Instruction
 
